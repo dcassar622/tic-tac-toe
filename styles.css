@@ -34,13 +34,26 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    background: lightgreen;
+    background: rgb(140, 211, 176);
     font-size: 3rem;
 }
 
-.active {
-    transition-duration: 1s;
+.active { transition-duration: 1s;
     transform: scale(1.1);
+   
+}
+
+.active > .square {
+    background: lightgreen;
+}
+
+.inactive {
+    transition-duration: 1s;
+    transform: scale(1);
+}
+
+.inactive > .square {
+    background: rgb(140, 211, 176);
 }
 
 /* controls area */
@@ -52,14 +65,69 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid black;
 }
 
 #player-info {
     font-size: 1.25rem;
+    display: grid;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 3rem;
 }
 
 button {
-    padding: 5px;
-    font-size: 1rem;;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    width: 15rem;
+}
+
+button:hover {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    width: 15rem;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all .07s ease;
+    background: rgb(140, 211, 176);
+    color: white;
+}
+
+#button-area {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+#restart-btn {
+    background: black;
+    color: white;
+}
+
+#restart-btn:hover {
+    background: rgb(140, 211, 176);
+    color: black;
+}
+
+#start-btn {
+    grid-column-start: 2; 
+    grid-column-end: 4; 
+}
+
+label, input {
+    padding: 10px
+}
+
+input {
+    font-size: 1rem;
+}
+
+/* winner area */
+
+#winner-area {
+    font-size: 3rem;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in;
 }

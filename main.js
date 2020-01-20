@@ -24,11 +24,17 @@ let player2;
 	=====================
 */
 const playHumanBtn = document.getElementById('play-btn');
-playHumanBtn.addEventListener('click', showPlayerSection)
+playHumanBtn.addEventListener('click', () => {
+    playComputer = false;
+    document.getElementById('player2-name').value = '';
+    showPlayerSection();
+})
 
 const playComputerBtn = document.getElementById('computer-play-btn');
 playComputerBtn.addEventListener('click', () => {
     playComputer = true;
+    document.getElementById('player2-name').value = 'Computer';
+    console.log(playComputer);
     showPlayerSection();
 })
 
@@ -75,13 +81,16 @@ function getPlayerNames() {
 }
 
 function activateBoard() { 
+    // Allows board CSS animation once it's activated
     document.getElementById('game-board').className = 'active';
     // Add event listener to game area and get id of square clicked
     gameArea.addEventListener('click', (event) => {
         if (event.target.innerHTML === '') {
             updateBoardArray(event.target.dataset.key);
             markSquarePlayer(event.target);
-            if (!gameOver && playComputer) playComputerRound();
+            if (!gameOver && playComputer) {
+                playComputerRound();
+            }
         }
     });
 }
@@ -148,6 +157,7 @@ function checkIfWin() {
 
 //clears data, display and resets global variables
 function restartGame() {
+    document.getElementById('game-board').className = 'inactive';
     boardArray = Array(9).fill('');
     for (var i=0; i<squares.length; i++) {
         squares[i].innerHTML = '';
@@ -158,8 +168,7 @@ function restartGame() {
 
     document.getElementById('player1-name').value = '';
     document.getElementById('player2-name').value = '';
-
-    startGame();
+    winnerArea.innerHTML = ``;
 }
 
 // Chooses a random number for the computer, checks that the chosen position is available, and updates data and board
