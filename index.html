@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id='page-wrapper'>
+        <div id='game-board'>
+            <div data-key='0' class='square'></div>
+            <div data-key='1' class='square'></div>
+            <div data-key='2' class='square'></div>
+            <div data-key='3' class='square'></div>
+            <div data-key='4' class='square'></div>
+            <div data-key='5' class='square'></div>
+            <div data-key='6' class='square'></div>
+            <div data-key='7' class='square'></div>
+            <div data-key='8' class='square'></div>
+        </div>
+        <div id='controls-area'>
+            <div id='button-area'>
+                <button id='play-btn'>Play Against Human</button>
+                <button id='computer-play-btn'>Play Against Computer</button>
+                <button id='restart-btn'>Restart Game</button>
+             </div>
+            <div id='player-info' class='hidden'>
+                <label>Player 1 Name : </label>
+                <input type='text' id='player1-name'>
+                <label>Player 2 Name : </label>
+                <input type='text' id='player2-name'>
+                <button id='start-btn'>PLAY!</button>
+             </div>
+        </div>
+        <div id='winner-area'></div>
+    </div>
+    <script src='main.js'></script>
+</body>
+</html>
