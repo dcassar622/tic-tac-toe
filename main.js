@@ -61,6 +61,7 @@ function hidePlayerSection() {
 // Gets Player(s) Name(s) and sets up board
 function startGame() {
     winnerArea.innerHTML = ``;
+    clearBoard();
     getPlayerNames();
     hidePlayerSection();
     activateBoard();
@@ -83,12 +84,15 @@ function getPlayerNames() {
 function activateBoard() { 
     // Allows board CSS animation once it's activated
     document.getElementById('game-board').className = 'active';
-    // Add event listener to game area and get id of square clicked
+    // Add event listener to game area 
+    playCount = 1;
+    gameOver = false;
     gameArea.addEventListener('click', (event) => {
         if (event.target.innerHTML === '') {
             updateBoardArray(event.target.dataset.key);
             markSquarePlayer(event.target);
             if (!gameOver && playComputer) {
+                console.log('playing computer round');
                 playComputerRound();
             }
         }
@@ -157,11 +161,8 @@ function checkIfWin() {
 
 //clears data, display and resets global variables
 function restartGame() {
-    document.getElementById('game-board').className = 'inactive';
-    boardArray = Array(9).fill('');
-    for (var i=0; i<squares.length; i++) {
-        squares[i].innerHTML = '';
-    }
+    document.getElementById('game-board').className = 'active';
+    clearBoard();
 
     currSymbol = 'X';
     playCount = 1;
@@ -181,6 +182,13 @@ function playComputerRound() {
     }
     else {
         playComputerRound();
+    }
+}
+
+function clearBoard() {
+    boardArray = Array(9).fill('');
+    for (var i=0; i<squares.length; i++) {
+        squares[i].innerHTML = '';
     }
 }
   
